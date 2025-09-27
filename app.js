@@ -1,7 +1,30 @@
+// OCR pakai Tesseract.js
+function runOCR() {
+  const file = document.getElementById("fileInput").files[0];
+  if (!file) {
+    alert("Pilih gambar dulu!");
+    return;
+  }
+
+  Tesseract.recognize(
+    file,
+    'eng+ind',
+    { logger: m => console.log(m) }
+  ).then(({ data: { text } }) => {
+    document.getElementById("ocrResult").innerText = "Hasil OCR:\n" + text;
+
+    // Parsing sederhana
+    document.getElementById("noTujuan").value = text.match(/08[0-9]{8,}/)?.[0] || "";
+    document.getElementById("nominal").value = (text.match(/Rp\W?([0-9.,]+)/)?.[1] || "").replace(/[.,]/g,"");
+  });
+}
+
+// Format angka jadi Rupiah
 function formatCurrency(num) {
   return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(num);
 }
 
+// Preview Struk
 function previewStruk() {
   const header = document.getElementById("header").value;
   const noTujuan = document.getElementById("noTujuan").value;
@@ -15,7 +38,7 @@ function previewStruk() {
 
   const struk = `
 ==========================
-      ${header}
+       ${header}
 ==========================
 
 No. Tujuan     : ${noTujuan}
@@ -36,7 +59,7 @@ ${footer}
   return struk;
 }
 
-// Cetak via Web Bluetooth API (ESC/POS)
+// Print ke Bluetooth (ESC/POS)
 async function printStruk() {
   const struk = previewStruk();
   try {
