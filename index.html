@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>OCR Struk 58mm</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h2>OCR Struk 58mm</h2>
 
-  <!-- Upload Gambar untuk OCR -->
-  <input type="file" id="fileInput" accept="image/*">
-  <button onclick="runOCR()">Jalankan OCR</button>
+  <!-- Upload gambar -->
+  <input type="file" id="fileInput" accept="image/*" />
+  <button id="btnOCR">Jalankan OCR</button>
+  <pre id="ocrRaw" style="white-space:pre-wrap"></pre>
+  <hr />
 
-  <div id="ocrResult"></div>
-  <hr>
-
-  <!-- Form Input (bisa auto terisi dari OCR) -->
-  <form id="strukForm">
+  <!-- Form struk -->
+  <form id="strukForm" onsubmit="return false;">
     <label>Header (Nama Toko)</label>
-    <input type="text" id="header" value="AFFANDI CELL">
+    <input id="header" value="AFFANDI CELL" />
 
     <label>No Tujuan</label>
-    <input type="text" id="noTujuan">
+    <input id="noTujuan" placeholder="0812xxxxxxx" />
 
-    <label>Metode Tujuan</label>
-    <input type="text" id="metodeTujuan">
+    <label>Metode Tujuan (Bank/Ewallet)</label>
+    <input id="metodeTujuan" placeholder="BCA / Dana" />
 
     <label>No Pengirim</label>
-    <input type="text" id="noPengirim">
+    <input id="noPengirim" placeholder="0881xxxxxxx" />
 
-    <label>Metode Pengirim</label>
-    <input type="text" id="metodePengirim">
+    <label>Metode Pengirim (Bank/Ewallet)</label>
+    <input id="metodePengirim" placeholder="BRI / OVO" />
 
     <label>Nominal</label>
-    <input type="number" id="nominal">
+    <input id="nominal" type="number" value="0" />
 
     <label>Biaya Admin</label>
-    <input type="number" id="admin" value="2000">
+    <input id="admin" type="number" value="0" />
 
     <label>Footer</label>
-    <input type="text" id="footer" value="Terima kasih 🙏">
+    <input id="footer" value="Terima kasih 🙏" />
 
-    <button type="button" onclick="previewStruk()">Preview</button>
-    <button type="button" onclick="printStruk()">Print Bluetooth</button>
+    <div style="margin-top:8px">
+      <button id="btnPreview">Preview</button>
+      <button id="btnPrint">Print Bluetooth</button>
+    </div>
   </form>
 
-  <pre id="preview"></pre>
+  <pre id="preview" style="white-space:pre-wrap"></pre>
 
-  <!-- OCR Library -->
+  <!-- Tesseract.js (OCR) -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <!-- App logic -->
   <script src="app.js"></script>
 </body>
 </html>
