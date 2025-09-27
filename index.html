@@ -5,29 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OCR Struk 58mm</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <h2>Struk Transfer 58mm</h2>
+  <h2>OCR Struk 58mm</h2>
 
+  <!-- Upload Gambar untuk OCR -->
+  <input type="file" id="fileInput" accept="image/*">
+  <button onclick="runOCR()">Jalankan OCR</button>
+
+  <div id="ocrResult"></div>
+  <hr>
+
+  <!-- Form Input (bisa auto terisi dari OCR) -->
   <form id="strukForm">
     <label>Header (Nama Toko)</label>
     <input type="text" id="header" value="AFFANDI CELL">
 
     <label>No Tujuan</label>
-    <input type="text" id="noTujuan" placeholder="0812xxxxxxx">
+    <input type="text" id="noTujuan">
 
-    <label>Metode Tujuan (Bank/Ewallet)</label>
-    <input type="text" id="metodeTujuan" placeholder="BCA / Dana">
+    <label>Metode Tujuan</label>
+    <input type="text" id="metodeTujuan">
 
     <label>No Pengirim</label>
-    <input type="text" id="noPengirim" placeholder="0881xxxxxxx">
+    <input type="text" id="noPengirim">
 
-    <label>Metode Pengirim (Bank/Ewallet)</label>
-    <input type="text" id="metodePengirim" placeholder="BRI / OVO">
+    <label>Metode Pengirim</label>
+    <input type="text" id="metodePengirim">
 
     <label>Nominal</label>
-    <input type="number" id="nominal" value="50000">
+    <input type="number" id="nominal">
 
     <label>Biaya Admin</label>
     <input type="number" id="admin" value="2000">
@@ -41,6 +48,8 @@
 
   <pre id="preview"></pre>
 
+  <!-- OCR Library -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
