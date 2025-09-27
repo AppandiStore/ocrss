@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR Struk 58mm</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h2>Struk Transfer 58mm</h2>
+
+  <form id="strukForm">
+    <label>Header (Nama Toko)</label>
+    <input type="text" id="header" value="AFFANDI CELL">
+
+    <label>No Tujuan</label>
+    <input type="text" id="noTujuan" placeholder="0812xxxxxxx">
+
+    <label>Metode Tujuan (Bank/Ewallet)</label>
+    <input type="text" id="metodeTujuan" placeholder="BCA / Dana">
+
+    <label>No Pengirim</label>
+    <input type="text" id="noPengirim" placeholder="0881xxxxxxx">
+
+    <label>Metode Pengirim (Bank/Ewallet)</label>
+    <input type="text" id="metodePengirim" placeholder="BRI / OVO">
+
+    <label>Nominal</label>
+    <input type="number" id="nominal" value="50000">
+
+    <label>Biaya Admin</label>
+    <input type="number" id="admin" value="2000">
+
+    <label>Footer</label>
+    <input type="text" id="footer" value="Terima kasih 🙏">
+
+    <button type="button" onclick="previewStruk()">Preview</button>
+    <button type="button" onclick="printStruk()">Print Bluetooth</button>
+  </form>
+
+  <pre id="preview"></pre>
+
+  <script src="app.js"></script>
+</body>
+</html>
